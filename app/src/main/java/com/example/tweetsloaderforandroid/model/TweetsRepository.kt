@@ -1,5 +1,6 @@
 package com.example.tweetsloaderforandroid.model
 
+import android.content.ContentResolver
 import android.content.Context
 import android.net.Uri
 import android.provider.OpenableColumns
@@ -14,22 +15,28 @@ import java.util.Locale
 import javax.inject.Inject
 import kotlin.jvm.Throws
 
-class TweetsRepository @Inject constructor(
-    @ApplicationContext private val appContext: Context,
+class TweetsRepository(
+    private val appContext: Context,
+    private val contentResolver: ContentResolver,
     private val tweetsDao: TweetsDao
-){
+) {
+    @Inject constructor(
+        @ApplicationContext appContext: Context,
+        tweetsDao: TweetsDao
+    ) : this(appContext, appContext.contentResolver, tweetsDao)
+    
     @Throws(IOException::class)
     suspend fun loadTweets() {
         val tweetsUri = loadTweetsUri() ?: return
 
-        appContext.contentResolver.openInputStream(tweetsUri)?.use { inputStream ->
+        contentResolver.openInputStream(tweetsUri)?.use { inputStream ->
             saveTweets(formatTweets(decode(inputStream.readBytes().toString(Charsets.UTF_8))))
         }
     }
 
     fun getTweetsFileName(): String? {
         val tweetsUri = loadTweetsUri() ?: return null
-        val cursor = appContext.contentResolver.query(tweetsUri, null, null, null, null) ?: return null
+        val cursor = contentResolver.query(tweetsUri, null, null, null, null) ?: return null
         val nameIndex = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME)
         cursor.moveToFirst()
         val fileName = cursor.getString(nameIndex)
