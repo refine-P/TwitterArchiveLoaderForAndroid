@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">TweetsLoaderForAndroid</string>
+    <string name="title_home">Home</string>
+    <string name="title_search">Search</string>
+    <string name="title_settings">Settings</string>
+    <string name="search_hint">ツイートを検索</string>
+    <string name="load_archive">ツイートのアーカイブを読み込む</string>
+</resources>
