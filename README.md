@@ -5,8 +5,8 @@ Twitterのアーカイブはブラウザ上だと良い感じのUIで閲覧で�
 
 # Quick start
 1. https://help.x.com/ja/managing-your-account/how-to-download-your-x-archive を参考にTwitterのアーカイブをダウンロードする。
-2. ダウンロードしたTwitterのアーカイブの `data/tweets.js` をローカルやGoogle Drive等のスマホからアクセス可能な場所に保存しておく。（その際、ファイルの名前は変更しておいた方が良い。）
-3. https://github.com/refine-P/TwitterArchiveLoaderForAndroid/releases/latest/app-debug.apk からアプリをダウンロード。
+2. ダウンロードしたTwitterのアーカイブの `data/tweets.js` をローカルやGoogle Drive等のスマホからアクセス可能な場所に保存しておく。（その際、ファイルの名前は`<日付>-tweets.js`のように変更しておくと、いつダウンロードしたアーカイブかが分かりやすくなって良さそう。）
+3. https://github.com/refine-P/TwitterArchiveLoaderForAndroid/releases/latest のページからアプリ（app-debug.apk）をダウンロード。
 4. アプリを開いて、`Settings` のタブから2.で用意したファイルを読み込む。
 5. `Home` のタブからアーカイブの閲覧、`Search` のタブからアーカイブの検索ができる。
 
